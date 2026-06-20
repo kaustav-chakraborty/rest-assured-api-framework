@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class createBookingsTest {
+public class CreateBookingsTest {
 
     @Test
     public void createBooking(){
