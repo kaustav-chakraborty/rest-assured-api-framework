@@ -1,0 +1,18 @@
+# Maven
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Logs
+logs/
+*.log
+
+# Allure Reports
+allure-results/
+allure-report/
+
+# OS files
+.DS_Store
+Thumbs.db
