@@ -1,6 +1,8 @@
 package tests;
 
 import io.restassured.response.Response;
+import models.BookingDates;
+import models.Bookings;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,23 +11,20 @@ public class CreateBookingsTest {
 
     @Test
     public void createBooking(){
-        String body="""
-            {
-                "firstname":"Kaustav",
-                "lastname":"Chakraborty",
-                "totalprice":500,
-                "depositpaid":true,
-                "bookingdates":{
-                    "checkin":"2026-06-16",
-                    "checkout":"2026-06-20"
-                },
-                "additionalneeds":"Breakfast"
-            }
-            """;
+        BookingDates bookingDates=new BookingDates("2026-06-16",
+                "2026-06-20");
+        Bookings booking = new Bookings(
+                "Kaustav",
+                "Chakraborty",
+                500,
+                true,
+                bookingDates,
+                "Breakfast"
+        );
         Response response=given()
                 .baseUri("https://restful-booker.herokuapp.com")
                 .contentType("application/json")
-                .body(body)
+                .body(booking)
                 .when()
                 .post("/booking");
                 response.prettyPrint();
